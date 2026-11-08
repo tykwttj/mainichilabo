@@ -3,7 +3,7 @@
   --paper:#EEF4F0; --surface:#FFFFFF; --line:#D4E0D7; --ink:#17261D; --muted:#56665B;
   --leaf:#23703F; --mint:#DDF0E1; --pond:#1D5A37; --pond-deep:#164A2D; --on-pond:#F3FAF5; --on-pond-muted:#BFDCC8;
   --coral:#F29A7E; --amber:#7D5600; --amber-soft:#F7E9C2; --bad:#A23F22; --bad-soft:#F8DDD2;
-  --round:"KP Round","Hiragino Maru Gothic ProN","BIZ UDPGothic",sans-serif;
+  --round:"KP Round","Hiragino Maru Gothic ProN",sans-serif;
   --body:"Hiragino Sans","Noto Sans JP","Yu Gothic",system-ui,sans-serif;
 }
 @media (prefers-color-scheme:dark){:root{
@@ -153,6 +153,11 @@ h2{font-size:clamp(24px,4.4vw,32px);line-height:1.5;margin:0 0 12px;text-wrap:ba
 .doc td:first-child{width:30%;font-weight:700}
 @media (max-width:560px){.doc table,.doc tbody,.doc tr,.doc td{display:block;width:100%!important}.doc td:first-child{border-bottom:0;padding-bottom:0}}
 .doc-bar{border-bottom:1px solid var(--line);margin-bottom:8px}
+.kv{background:var(--surface);border:1px solid var(--line);border-radius:16px;margin:24px 0;padding:4px 18px}
+.kv dt{font-weight:700;padding-top:14px}
+.kv dd{margin:2px 0 0;padding-bottom:14px;border-bottom:1px solid var(--line)}
+.kv dd:last-child{border-bottom:0}
+@media (min-width:640px){.kv{display:grid;grid-template-columns:13em 1fr;padding:4px 22px}.kv dt,.kv dd{padding:14px 0;border-bottom:1px solid var(--line)}.kv dd{margin:0;padding-left:16px}.kv dt:nth-last-of-type(1){border-bottom:0}}
 
 footer{padding:36px 0 56px;color:var(--muted);font-size:14px}
 footer nav{display:flex;flex-wrap:wrap;gap:8px 22px;margin-bottom:14px}
