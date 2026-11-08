@@ -1,0 +1,172 @@
+@font-face{font-family:"KP Round";src:url("fonts/round.woff") format("woff");font-weight:700;font-display:swap}
+:root{
+  --paper:#EEF4F0; --surface:#FFFFFF; --line:#D4E0D7; --ink:#17261D; --muted:#56665B;
+  --leaf:#23703F; --mint:#DDF0E1; --pond:#1D5A37; --pond-deep:#164A2D; --on-pond:#F3FAF5; --on-pond-muted:#BFDCC8;
+  --coral:#F29A7E; --amber:#7D5600; --amber-soft:#F7E9C2; --bad:#A23F22; --bad-soft:#F8DDD2;
+  --round:"KP Round","Hiragino Maru Gothic ProN","BIZ UDPGothic",sans-serif;
+  --body:"Hiragino Sans","Noto Sans JP","Yu Gothic",system-ui,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root{
+  --paper:#0F1712; --surface:#18221B; --line:#2A372E; --ink:#E6EEE8; --muted:#A3B3A7;
+  --leaf:#7BD096; --mint:#1E3326; --amber:#E8C46A; --amber-soft:#3A3018; --bad:#F0A58C; --bad-soft:#3A221A;
+}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);line-height:1.85;font-size:16px;font-feature-settings:"palt" 0}
+img,svg{display:block}
+a{color:var(--leaf);text-underline-offset:3px}
+:focus-visible{outline:2px solid var(--leaf);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+.narrow{max-width:720px}
+h1,h2,h3{font-family:var(--round);font-weight:700;letter-spacing:.02em;word-break:auto-phrase}
+.lead,.hero p{word-break:auto-phrase}
+.nb{display:inline-block}
+h2{font-size:clamp(24px,4.4vw,32px);line-height:1.5;margin:0 0 12px;text-wrap:balance}
+.lead{color:var(--muted);margin:0 0 32px;max-width:36em}
+
+/* ヘッダー */
+.bar{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+.brand{display:flex;align-items:center;gap:10px;color:inherit;text-decoration:none;font-family:var(--round);font-weight:700;font-size:17px}
+.brand img{width:32px;height:32px;border-radius:9px}
+.bar nav a{color:inherit;font-size:14px;text-decoration:none;opacity:.85}
+.bar nav a:hover{text-decoration:underline;opacity:1}
+
+/* ヒーロー：池の緑に水の輪、右にアプリの画面 */
+.hero{background:var(--pond);color:var(--on-pond);position:relative;overflow:hidden}
+.hero .bar{position:relative;z-index:1}
+.ripples{position:absolute;right:-180px;top:-120px;width:760px;height:760px;pointer-events:none}
+.ripples circle{fill:none;stroke:var(--on-pond);stroke-opacity:.07;stroke-width:2}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:48px;align-items:center;padding:24px 0 96px;position:relative}
+.hero h1{font-size:clamp(32px,5.2vw,50px);line-height:1.4;margin:0 0 20px;letter-spacing:.01em}
+.hero p{color:var(--on-pond-muted);margin:0 0 28px;max-width:30em;font-size:17px}
+.soon{display:inline-flex;align-items:center;gap:10px;background:var(--on-pond);color:var(--pond);border-radius:999px;padding:10px 20px 10px 12px;font-weight:700;font-size:15px}
+.soon img{width:28px;height:28px;border-radius:8px}
+.hero small{display:block;color:var(--on-pond-muted);margin-top:14px;font-size:13px}
+
+/* スマホの画面（アプリのホームを HTML で再現） */
+.phone{width:290px;margin:0 auto;border-radius:46px;background:#0B130E;padding:10px;box-shadow:0 30px 60px rgba(0,0,0,.35);position:relative}
+.screen{border-radius:37px;overflow:hidden;background:#EEF4F0;color:#17261D;height:590px;position:relative;font-size:12px;line-height:1.5}
+.s-hero{background:#1D5A37;color:#F3FAF5;padding:44px 16px 34px;position:relative}
+.s-top{display:flex;justify-content:space-between;align-items:center;font-size:11px;opacity:.9}
+.s-lock{width:26px;height:26px;border-radius:50%;background:rgba(255,255,255,.14);display:grid;place-items:center}
+.s-head{font-family:var(--round);font-size:21px;line-height:1.45;margin:14px 0 10px}
+.s-chips{display:flex;gap:6px;flex-wrap:wrap}
+.s-chip{border-radius:999px;padding:2px 9px;font-size:10px;background:rgba(255,255,255,.14)}
+.s-chip.alert{background:#F29A7E;color:#3A140A;font-weight:700}
+.s-actions{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:16px;text-align:center;font-size:9px;white-space:nowrap;letter-spacing:-.02em}
+.s-actions span{display:grid;place-items:center;height:40px;border-radius:13px;background:rgba(255,255,255,.12);margin-bottom:4px}
+.s-actions b{font-weight:500}
+.s-sheet{background:#EEF4F0;border-radius:20px 20px 0 0;margin-top:-20px;position:relative;padding:16px 12px}
+.s-title{font-family:var(--round);font-size:13px;margin:0 4px 8px}
+.s-list{background:#fff;border-radius:16px;border:1px solid #D4E0D7}
+.s-row{display:flex;align-items:center;gap:10px;padding:10px 12px}
+.s-row+.s-row{position:relative}
+.s-row+.s-row::before{content:"";position:absolute;left:54px;right:0;top:0;border-top:1px solid #D4E0D7}
+.s-mono{width:32px;height:32px;border-radius:10px;display:grid;place-items:center;font-weight:700;flex:none}
+.s-row div{flex:1;min-width:0}
+.s-row strong{display:block;font-size:12.5px}
+.s-row em{font-style:normal;color:#56665B;font-size:10px}
+.s-pill{border-radius:999px;padding:1px 8px;font-size:10px;font-weight:700;white-space:nowrap}
+.s-pill.bad{background:#F8DDD2;color:#A23F22}
+.s-pill.warn{background:#F7E9C2;color:#7D5600}
+.s-pill.ok{color:#56665B;font-weight:400}
+
+/* 通知（ページを開いたときに一度だけ、上から降りてくる） */
+.notice{position:absolute;left:18px;right:18px;top:16px;z-index:2;background:rgba(246,250,247,.94);color:#17261D;border-radius:18px;padding:10px 12px;display:flex;gap:10px;box-shadow:0 10px 30px rgba(0,0,0,.28);font-size:11.5px;line-height:1.45;animation:drop .7s cubic-bezier(.2,.9,.3,1.2) 1s both}
+.notice img{width:30px;height:30px;border-radius:8px;flex:none}
+.notice b{display:flex;justify-content:space-between;font-size:11px;color:#56665B;font-weight:500}
+@keyframes drop{from{transform:translateY(-130%);opacity:0}to{transform:none;opacity:1}}
+@media (prefers-reduced-motion:reduce){.notice{animation:none}}
+
+/* 3ステップ：番号の付いた順番。各ステップにアプリの画面の一部 */
+.band{padding:88px 0}
+.steps{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;counter-reset:step}
+.steps li{counter-increment:step;display:flex;flex-direction:column}
+.steps h3{font-size:19px;margin:18px 0 6px;display:flex;align-items:center;gap:10px}
+.steps h3::before{content:counter(step);display:inline-grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--leaf);color:var(--paper);font-size:15px;flex:none}
+.steps p{margin:0;color:var(--muted);font-size:15px}
+.frag{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:22px 18px;min-height:150px;display:flex;flex-direction:column;justify-content:center;gap:10px}
+.f-btn{display:flex;align-items:center;justify-content:center;gap:8px;border-radius:999px;padding:11px 14px;font-weight:700;font-size:14px;border:1px solid var(--line);color:var(--leaf);background:var(--paper)}
+.f-btn.primary{background:var(--leaf);color:var(--paper);border-color:transparent}
+.f-sub{font-size:12.5px;color:var(--muted);text-align:center}
+.f-sub b{color:var(--ink)}
+.f-pass{font-family:ui-monospace,Menlo,monospace;letter-spacing:3px;font-size:18px;text-align:center;background:var(--paper);border-radius:12px;padding:8px}
+.f-copied{display:flex;align-items:center;justify-content:center;gap:6px;font-size:12.5px;color:var(--leaf);font-weight:700}
+
+/* 端末の中だけ：図と短い説明 */
+.local{background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.local-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:56px;align-items:center}
+.diagram{max-width:380px;width:100%;margin:0 auto;color:var(--leaf)}
+.facts{list-style:none;margin:0;padding:0;display:grid;gap:22px}
+.facts li{display:grid;grid-template-columns:40px 1fr;gap:14px;align-items:start}
+.facts .ic{width:40px;height:40px;border-radius:12px;background:var(--mint);display:grid;place-items:center;color:var(--leaf)}
+.facts b{display:block;font-size:16px}
+.facts span{color:var(--muted);font-size:15px}
+
+/* なりすまし */
+.spoof-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px;align-items:center}
+.urlcard{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:22px}
+.urlcard label{display:block;font-size:13px;font-weight:700;margin-bottom:8px}
+.urlfield{border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;font-size:15px;background:var(--paper);overflow-wrap:anywhere}
+.urlfield b{font-weight:700}
+.warnline{display:flex;gap:8px;margin-top:12px;color:var(--bad);font-size:14px;line-height:1.6}
+.warnline svg{flex:none;margin-top:3px}
+.calm{list-style:none;margin:28px 0 0;padding:0;display:grid;gap:10px}
+.calm li{padding-left:22px;position:relative;color:var(--muted);font-size:15px}
+.calm li::before{content:"";position:absolute;left:2px;top:11px;width:8px;height:8px;border-radius:50%;background:var(--leaf)}
+
+/* プラン */
+.plans{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line);border-radius:24px;overflow:hidden;background:var(--surface)}
+.plan{padding:28px 26px}
+.plan+.plan{border-left:1px solid var(--line);background:var(--mint)}
+.plan h3{font-size:20px;margin:0 0 2px}
+.price{font-family:var(--round);font-size:28px;margin:6px 0 2px}
+.price small{font-family:var(--body);font-size:14px;color:var(--muted);font-weight:400}
+.plan ul{margin:16px 0 0;padding-left:1.2em}
+.plan li{margin:4px 0}
+.fine{color:var(--muted);font-size:13px;margin:14px 2px 0}
+
+/* よくある質問 */
+.faq details{border-bottom:1px solid var(--line);padding:4px 0}
+.faq summary{cursor:pointer;list-style:none;padding:16px 36px 16px 0;font-weight:700;position:relative}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"";position:absolute;right:8px;top:24px;width:9px;height:9px;border-right:2px solid var(--leaf);border-bottom:2px solid var(--leaf);transform:rotate(45deg);transition:transform .2s}
+.faq details[open] summary::after{transform:rotate(-135deg);top:28px}
+.faq details p{margin:0 0 18px;color:var(--muted)}
+.more{display:inline-block;margin-top:20px;font-weight:700}
+
+/* 締め */
+.closing{background:var(--pond);color:var(--on-pond);text-align:center;padding:80px 0}
+.closing h2{margin-bottom:20px}
+.closing img{width:84px;height:84px;border-radius:20px;margin:0 auto 24px;box-shadow:0 0 0 1px rgba(255,255,255,.25),0 14px 30px rgba(0,0,0,.3)}
+.closing p{color:var(--on-pond-muted);margin:0 0 24px}
+
+/* 文書のページ */
+.doc h1{font-size:30px;line-height:1.5;margin:24px 0 8px}
+.doc h2{font-size:21px;margin:40px 0 8px}
+.doc h3{font-size:17px;margin:28px 0 6px}
+.doc .updated{color:var(--muted);font-size:14px}
+.doc table{border-collapse:collapse;width:100%;background:var(--surface);border-radius:16px;overflow:hidden;font-size:15px;border:1px solid var(--line)}
+.doc th,.doc td{border-bottom:1px solid var(--line);padding:12px 14px;text-align:left;vertical-align:top}
+.doc tr:last-child td{border-bottom:0}
+.doc thead{display:none}
+.doc td:first-child{width:30%;font-weight:700}
+@media (max-width:560px){.doc table,.doc tbody,.doc tr,.doc td{display:block;width:100%!important}.doc td:first-child{border-bottom:0;padding-bottom:0}}
+.doc-bar{border-bottom:1px solid var(--line);margin-bottom:8px}
+
+footer{padding:36px 0 56px;color:var(--muted);font-size:14px}
+footer nav{display:flex;flex-wrap:wrap;gap:8px 22px;margin-bottom:14px}
+.note{color:var(--muted);font-size:13px}
+
+@media (max-width:860px){
+  .hero-grid,.local-grid,.spoof-grid{grid-template-columns:minmax(0,1fr);gap:40px}
+  .hero-grid{padding-bottom:72px}
+  .steps{grid-template-columns:minmax(0,1fr);gap:36px}
+  .bar nav{display:none}
+}
+@media (max-width:560px){
+  .plans{grid-template-columns:minmax(0,1fr)}
+  .plan+.plan{border-left:0;border-top:1px solid var(--line)}
+  .band{padding:64px 0}
+  .phone{transform:scale(.92);transform-origin:top center;margin-bottom:-48px}
+}
